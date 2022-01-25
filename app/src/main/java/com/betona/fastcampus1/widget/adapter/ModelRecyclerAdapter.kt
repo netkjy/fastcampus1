@@ -1,10 +1,13 @@
 package com.betona.fastcampus1.widget.adapter
 
-import android.content.res.loader.ResourcesProvider
+
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.betona.fastcampus1.model.CellType
 import com.betona.fastcampus1.model.Model
 import com.betona.fastcampus1.screen.base.BaseViewModel
+import com.betona.fastcampus1.util.mapper.ModelViewHolderMapper
+import com.betona.fastcampus1.util.provider.ResourcesProvider
 import com.betona.fastcampus1.widget.adapter.listener.AdapterListener
 import com.betona.fastcampus1.widget.adapter.viewholder.ModelViewHolder
 
@@ -17,11 +20,22 @@ class ModelRecyclerAdapter<M: Model, VM:BaseViewModel> (
     override fun getItemCount(): Int = modelList.size
     override fun getItemViewType(position: Int): Int = modelList[position].type.ordinal
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelViewHolder<M> {
-
+        return ModelViewHolderMapper.map(parent,CellType.values()[viewType],viewModel,resourceProvider)
     }
 
+    @Suppress("UNCHECHED_CAST")
     override fun onBindViewHolder(holder: ModelViewHolder<M>, position: Int) {
-        TODO("Not yet implemented")
+        with(holder) {
+            bindData(modelList[position] as M)
+            bindViews(modelList[position] as M, adapterListener)
+        }
+    }
+
+    override fun submitList(list: MutableList<Model>?) {
+        list?.let {
+            modelList = it
+        }
+        super.submitList(list)
     }
 
 

@@ -17,6 +17,6 @@ abstract class ModelViewHolder<M: Model> (
     open fun bindData(model:M) {
         reset()
     }
-    abstract fun bindView(model:M, adapterListener: AdapterListener)
+    abstract fun bindViews(model:M, adapterListener: AdapterListener)
 
 }
