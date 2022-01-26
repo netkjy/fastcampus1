@@ -9,8 +9,8 @@ import com.betona.fastcampus1.widget.adapter.listener.AdapterListener
 
 abstract class ModelViewHolder<M: Model> (
     binding: ViewBinding,
-    private val viewModel: BaseViewModel,
-    private val resourcesProvider: ResourcesProvider
+    protected val viewModel: BaseViewModel,
+    protected val resourcesProvider: ResourcesProvider
 
 ): RecyclerView.ViewHolder(binding.root) {
     abstract fun reset()

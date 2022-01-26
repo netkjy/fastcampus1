@@ -5,12 +5,14 @@ import android.view.ViewGroup
 import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
 import com.betona.fastcampus1.databinding.ViewholderEmptyBinding
+import com.betona.fastcampus1.databinding.ViewholderRestaurantBinding
 import com.betona.fastcampus1.model.CellType
 import com.betona.fastcampus1.model.Model
 import com.betona.fastcampus1.screen.base.BaseViewModel
 import com.betona.fastcampus1.util.provider.ResourcesProvider
 import com.betona.fastcampus1.widget.adapter.viewholder.EmptyViewHolder
 import com.betona.fastcampus1.widget.adapter.viewholder.ModelViewHolder
+import com.betona.fastcampus1.widget.adapter.viewholder.restaunt.RestaurantViewHolder
 
 object ModelViewHolderMapper {
     @Suppress("UNCHECKED_CAST")
@@ -24,6 +26,11 @@ object ModelViewHolderMapper {
         val viewHolder = when(type) {
             CellType.EMPTY_CELL -> EmptyViewHolder(
                 ViewholderEmptyBinding.inflate(inflater,parent,false),
+                viewModel,
+                resourcesProvider
+            )
+            CellType.RESTAURANT_CELL -> RestaurantViewHolder(
+                ViewholderRestaurantBinding.inflate(inflater,parent,false),
                 viewModel,
                 resourcesProvider
             )

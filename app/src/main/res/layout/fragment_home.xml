@@ -8,9 +8,11 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="?attr/toolbarStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,17 +30,21 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="현제위치" />
+            tools:text="현제 위치" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TableLayout
-        android:id="@+id/tableLayout"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tabGravity="fill"
+        app:tabIndicatorFullWidth="false"
+        app:tabMaxWidth="0dp"
+        app:tabMode="auto" />
 
     <HorizontalScrollView
         android:id="@+id/filterScrollView"
@@ -47,10 +53,10 @@
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tableLayout">
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/filterChipGroup"
+            android:id="@+id/orderChipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="12dp"
@@ -68,7 +74,7 @@
                 style="@style/Widget.fastcampus1.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="초기화"
+                android:text="@string/initialize"
                 android:visibility="gone"
                 app:chipIconEnabled="true"
                 app:chipIconTint="@color/icon_filter_chip_state_list" />
@@ -78,7 +84,7 @@
                 style="@style/Widget.fastcampus1.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="배달 빠른 순"
+                android:text="@string/fast_delivery"
                 app:chipIconEnabled="true"
                 app:chipIconTint="@color/icon_filter_chip_state_list" />
 
@@ -87,7 +93,7 @@
                 style="@style/Widget.fastcampus1.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="배달팁"
+                android:text="@string/low_delivery_tip"
                 app:chipIconEnabled="true"
                 app:chipIconTint="@color/icon_filter_chip_state_list" />
 
@@ -96,7 +102,7 @@
                 style="@style/Widget.fastcampus1.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="기본순"
+                android:text="@string/default_order"
                 app:chipIconEnabled="true"
                 app:chipIconTint="@color/icon_filter_chip_state_list" />
 
@@ -105,7 +111,7 @@
                 style="@style/Widget.fastcampus1.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="별점높은"
+                android:text="@string/top_rate"
                 app:chipIconEnabled="true"
                 app:chipIconTint="@color/icon_filter_chip_state_list" />
         </com.google.android.material.chip.ChipGroup>
@@ -142,6 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -151,7 +158,6 @@
             app:layout_constraintStart_toStartOf="@id/basketButton"
             app:layout_constraintTop_toTopOf="@id/basketButton"
             app:layout_constraintVertical_bias="0.5"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="+1" />
 
 
